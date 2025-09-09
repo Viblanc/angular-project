@@ -36,7 +36,7 @@
         <thead>
             <tr>
                 <th>Time</th>
-                <th>Operator</th>
+                <th>Operation</th>
                 <th>Result</th>
                 <th>Remove</th>
             </tr>
@@ -45,7 +45,7 @@
             @for (res of history(); track res.time) {
             <tr>
                 <td>{{res.time | date: 'H:mm:ss'}}</td>
-                <td>{{res.operator}}</td>
+                <td>{{res.operation}}</td>
                 <td>{{res.result | number: '1.0-2'}}</td>
                 <td class="deleteBtn" (click)="removeResult(res.time)">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"

@@ -10,6 +10,8 @@ import {
   Validators,
 } from '@angular/forms';
 
+type operator = '+' | '-' | '*' | '/';
+
 const divisionByZeroValidator: ValidatorFn = (
   control: AbstractControl
 ): ValidationErrors | null => {
@@ -36,10 +38,6 @@ export class Exercise2 {
     },
     { validators: divisionByZeroValidator }
   );
-
-  // operand1 = signal<number>(0);
-  // operand2 = signal<number>(0);
-  // operator = signal<'+' | '-' | '*' | '/'>('+');
   result = signal<Operation | undefined>(undefined);
   history = signal<Operation[]>([]);
 
@@ -57,11 +55,11 @@ export class Exercise2 {
 
     const op1 = this.form.controls.operand1.value!;
     const op2 = this.form.controls.operand2.value!;
-    const operator = this.form.controls.operator.value;
+    const operator = this.form.controls.operator.value!;
 
     const tmpRes = {
       time: Date.now(),
-      operator: operator!,
+      operation: op1 + operator + op2,
     };
 
     switch (operator) {
