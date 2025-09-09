@@ -1,0 +1,27 @@
+form {
+    display: inline-block;
+}
+
+.number {
+    width: 10rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+select {
+    font-size: 1.1rem;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.deleteBtn {
+    color: crimson;
+}
+
+.deleteBtn:hover {
+    cursor: pointer;
+}

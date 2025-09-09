@@ -1,0 +1,64 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <input class="number form-control" type="number" name="op1" id="op1" formControlName="operand1" />
+        </div>
+        <div class="col-auto">
+            <select class="form-select" name="operator" id="operator" formControlName="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+        </div>
+        <div class="col-auto">
+            <input class="number form-control" type="number" name="op2" id="op2" formControlName="operand2" />
+        </div>
+
+        <button class="btn btn-success my-4" type="submit">=</button>
+    </div>
+</form>
+
+@if (form.hasError('divisionByZero') && (form.touched || form.dirty)) {
+<p class="alert alert-danger">You cannot divide by zero!</p>
+}
+
+@if (result() !== undefined) {
+<p class="lead">The result is: {{result()?.result| number: '1.0-2'}}</p>
+}
+
+<div>
+    Previous results:
+    @if (history().length === 0) {
+    <p>No results yet.</p>
+    } @else {
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Time</th>
+                <th>Operator</th>
+                <th>Result</th>
+                <th>Remove</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (res of history(); track res.time) {
+            <tr>
+                <td>{{res.time | date: 'H:mm:ss'}}</td>
+                <td>{{res.operator}}</td>
+                <td>{{res.result | number: '1.0-2'}}</td>
+                <td class="deleteBtn" (click)="removeResult(res.time)">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-trash" viewBox="0 0 16 16">
+                        <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                        <path
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                    </svg>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    }
+</div>
