@@ -1,0 +1,41 @@
+@if (name().length !== 0) {
+<p [style.fontFamily]="selectedFont()" [style.fontSize]="fontSize() + 'px'" [style.textAlign]="selectedAlignment()">
+    {{message()}}</p>
+}
+
+<form>
+    <div class="mb-3">
+        <label class="form-label" for="name">Enter your name:</label>
+        <input class="form-control" id="name" type="text" name="name" [(ngModel)]="name" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="fontSize">Enter font size:</label>
+        <input class="form-control" id="fontSize" type="number" name="fontSize" [(ngModel)]="fontSize" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="fontFamily">Choose a font:</label>
+        <select class="form-select" name="fontFamily" id="fontFamily" [(ngModel)]="selectedFont">
+            @for (font of fonts; track font) {
+            <option [value]="font">{{font}}</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        Alignement:
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="left">Left</label>
+            <input class="form-check-input" type="radio" name="left" id="left" value="left"
+                [(ngModel)]="selectedAlignment" />
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="center">Center</label>
+            <input class="form-check-input" type="radio" name="center" id="center" value="center"
+                [(ngModel)]="selectedAlignment" />
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label" for="right">Right</label>
+            <input class="form-check-input" type="radio" name="right" id="right" value="right"
+                [(ngModel)]="selectedAlignment" />
+        </div>
+    </div>
+</form>
