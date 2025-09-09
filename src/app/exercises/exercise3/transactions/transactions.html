@@ -1,0 +1,28 @@
+<table class="table">
+    <thead>
+        <tr>
+            @for (col of sortedColumns; track col) {
+            @let selected = sortColumn() === col;
+            <th [class.selected]="selected" (click)="sortTransactions(col)">
+                {{col | titlecase}} {{selected ? (sortAscending() ? '↓' : '↑') : ''}}
+            </th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @for (transaction of sortedTransactions(); track transaction.id) {
+        <tr class="transaction-row" (click)="goToTransactionPage(transaction)">
+            <td>{{transaction.id}}</td>
+            <td>{{transaction.amount | currency}}</td>
+            <td>{{transaction.balance | currency}}</td>
+            <td>{{transaction.label}}</td>
+            <td>{{transaction.date | date: 'medium'}}</td>
+        </tr>
+        }
+    </tbody>
+    <tbody>
+</table>
+
+@if (error()) {
+<p class="alert alert-danger">{{error()}}</p>
+}

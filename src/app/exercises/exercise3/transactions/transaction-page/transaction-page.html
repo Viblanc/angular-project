@@ -1,0 +1,8 @@
+<ul class="list-group list-group-flush">
+    <li class="list-group-item">Transaction ID: {{transaction().id}}</li>
+    <li class="list-group-item">Amount: {{transaction().amount | currency}}</li>
+    <li class="list-group-item">Balance: {{transaction().balance | currency}}</li>
+    <li class="list-group-item">Label: {{transaction().label}}</li>
+    <li class="list-group-item">Description: {{transaction().description}}</li>
+    <li class="list-group-item">Date: {{transaction().date | date: 'medium'}}</li>
+</ul>

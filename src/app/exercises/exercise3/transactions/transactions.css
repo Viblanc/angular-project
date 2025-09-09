@@ -1,0 +1,12 @@
+th {
+    cursor: pointer;
+}
+
+.selected {
+    background-color: rgb(127, 171, 253);
+    border-radius: 5px 5px 0 0;
+}
+
+.transaction-row:hover {
+    cursor: pointer;
+}
