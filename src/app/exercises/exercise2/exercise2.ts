@@ -46,13 +46,6 @@ export class Exercise2 {
       return;
     }
 
-    // if result is undefined, we do not add it to the history
-    if (this.result() !== undefined) {
-      this.history.update((old) => {
-        return [this.result()!, ...old];
-      });
-    }
-
     const op1 = this.form.controls.operand1.value!;
     const op2 = this.form.controls.operand2.value!;
     const operator = this.form.controls.operator.value!;
@@ -88,6 +81,10 @@ export class Exercise2 {
         });
         break;
     }
+
+    this.history.update((old) => {
+      return [this.result()!, ...old];
+    });
   }
 
   removeResult(time: number) {
