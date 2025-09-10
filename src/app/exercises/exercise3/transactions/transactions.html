@@ -4,7 +4,7 @@
             <thead>
                 <tr>
                     @for (col of sortedColumns; track col) {
-                    @let selected = sortColumn() === col;
+                    @let selected = sortedColumn() === col;
                     <th [class.selected]="selected" (click)="sortTransactions(col)">
                         {{col | titlecase}} {{selected ? (sortAscending() ? '↓' : '↑') : ''}}
                     </th>

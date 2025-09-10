@@ -1,6 +1,9 @@
 import { Component, computed, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
+const fonts = ['Roboto', 'Open Sans', 'Montserrat', 'Oswald'] as const;
+type Fonts = (typeof fonts)[number];
+
 @Component({
   selector: 'app-exercise1',
   imports: [FormsModule],
@@ -11,7 +14,7 @@ export class Exercise1 {
   name = signal<string>('');
   message = computed(() => `Hello ${this.name().toUpperCase()}!`);
   fontSize = signal<number>(24);
-  fonts = ['Roboto', 'Open Sans', 'Montserrat', 'Oswald'];
-  selectedFont = signal<'Roboto' | 'Open Sans' | 'Montserrat' | 'Oswald'>('Roboto');
+  fonts = fonts;
+  selectedFont = signal<Fonts>('Roboto');
   selectedAlignment = signal<'left' | 'center' | 'right'>('left');
 }

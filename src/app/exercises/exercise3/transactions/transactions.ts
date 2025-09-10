@@ -18,20 +18,20 @@ export class Transactions {
   private destroyRef = inject(DestroyRef);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
+  error = signal('');
+  sortAscending = signal<boolean>(true);
+  sortedColumn = signal<SortedColumn>('id');
   transactions = this.transactionsService.transactions;
   sortedTransactions = computed(() => {
-    const sortCol = this.sortColumn();
+    const sortedCol = this.sortedColumn();
     return this.transactions().sort((a, b) => {
       if (this.sortAscending()) {
-        return a[sortCol] > b[sortCol] ? 1 : -1;
+        return a[sortedCol] > b[sortedCol] ? 1 : -1;
       } else {
-        return a[sortCol] > b[sortCol] ? -1 : 1;
+        return a[sortedCol] > b[sortedCol] ? -1 : 1;
       }
     });
   });
-  error = signal('');
-  sortAscending = signal<boolean>(true);
-  sortColumn = signal<SortedColumn>('id');
 
   ngOnInit() {
     const subscription = this.transactionsService.loadAllTransactions().subscribe({
@@ -50,10 +50,10 @@ export class Transactions {
   }
 
   sortTransactions(column: SortedColumn) {
-    if (column === this.sortColumn()) {
+    if (column === this.sortedColumn()) {
       this.sortAscending.set(!this.sortAscending());
     } else {
-      this.sortColumn.set(column);
+      this.sortedColumn.set(column);
     }
   }
 }
