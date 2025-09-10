@@ -1,0 +1,9 @@
+.wrapper {
+    height: 10rem;
+    max-height: 10rem;
+    overflow: hidden;
+}
+
+.fallback {
+    font-size: 24px;
+}

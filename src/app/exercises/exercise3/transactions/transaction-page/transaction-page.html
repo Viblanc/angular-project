@@ -1,8 +1,8 @@
-<ul class="list-group list-group-flush">
-    <li class="list-group-item">Transaction ID: {{transaction().id}}</li>
-    <li class="list-group-item">Amount: {{transaction().amount | currency}}</li>
-    <li class="list-group-item">Balance: {{transaction().balance | currency}}</li>
-    <li class="list-group-item">Label: {{transaction().label}}</li>
-    <li class="list-group-item">Description: {{transaction().description}}</li>
-    <li class="list-group-item">Date: {{transaction().date | date: 'medium'}}</li>
+<ul class="align-items-center list-group list-group-flush">
+    <li class="list-group-item"><span>Transaction ID: </span>{{transaction().id}}</li>
+    <li class="list-group-item"><span>Amount: </span>{{transaction().amount | currency}}</li>
+    <li class="list-group-item"><span>Balance: </span>{{transaction().balance | currency}}</li>
+    <li class="list-group-item"><span>Label: </span>{{transaction().label}}</li>
+    <li class="list-group-item"><span>Description: </span>{{transaction().description}}</li>
+    <li class="list-group-item"><span>Date: </span>{{transaction().date | date: 'medium'}}</li>
 </ul>

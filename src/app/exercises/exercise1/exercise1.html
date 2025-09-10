@@ -1,15 +1,22 @@
-@if (name().length !== 0) {
-<p [style.fontFamily]="selectedFont()" [style.fontSize]="fontSize() + 'px'" [style.textAlign]="selectedAlignment()">
-    {{message()}}</p>
-}
+<div class="w-75 mx-auto">
 
-<form>
+    <div class="wrapper">
+        @if (name().length) {
+        <p [style.fontFamily]="selectedFont()" [style.fontSize]="fontSize() + 'px'"
+            [style.textAlign]="selectedAlignment()">
+            {{message()}}</p>
+        } @else {
+        <p class="fallback">Please input your name.</p>
+        }
+    </div>
+
+
     <div class="mb-3">
         <label class="form-label" for="name">Enter your name:</label>
         <input class="form-control" id="name" type="text" name="name" [(ngModel)]="name" />
     </div>
     <div class="mb-3">
-        <label class="form-label" for="fontSize">Enter font size:</label>
+        <label class="form-label" for="fontSize">Enter font size (px):</label>
         <input class="form-control" id="fontSize" type="number" name="fontSize" [(ngModel)]="fontSize" />
     </div>
     <div class="mb-3">
@@ -38,4 +45,4 @@
                 [(ngModel)]="selectedAlignment" />
         </div>
     </div>
-</form>
+</div>
