@@ -3,8 +3,13 @@ import { Exercise1 } from './exercises/exercise1/exercise1';
 import { Exercise2 } from './exercises/exercise2/exercise2';
 import { Exercise3 } from './exercises/exercise3/exercise3';
 import { ex3Routes } from './exercises/exercise3/ex3.routes';
+import { WelcomePage } from './welcome-page/welcome-page';
 
 export const routes: Routes = [
+  {
+    path: '',
+    component: WelcomePage,
+  },
   {
     path: 'ex1',
     component: Exercise1,

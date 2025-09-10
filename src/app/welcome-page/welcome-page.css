@@ -1,0 +1,29 @@
+/* .wrapper {
+    display: inline-block;
+    text-align: center;
+    margin: 0 auto;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper h1 {
+    display: inline-block;
+    text-align: center;
+font-family: Montserrat;
+    font-size: 72px;
+    margin: auto;
+} */
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.wrapper h1 {
+    font-family: Montserrat;
+    font-size: 72px;
+    margin: 2rem 0;
+}
